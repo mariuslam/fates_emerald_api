@@ -499,11 +499,12 @@ contains
          dim1name='pft',                                                            &
          long_name='pft weight relative to corresponding landunit', units='',       & 
          interpinic_flag='area', readvar=readvar, data=patch%wtlunit)
-
-    !call restartvar(ncid=ncid, flag=flag, varname='pfts1d_wtcol', xtype=ncd_double, &
-    !     dim1name='pft',                                                            &
-    !     long_name='pft weight relative to corresponding column', units='',         &
-    !     interpinic_flag='area', readvar=readvar, data=patch%wtcol)
+    if (flag == 'write') then
+     call restartvar(ncid=ncid, flag=flag, varname='pfts1d_wtcol', xtype=ncd_double, &
+         dim1name='pft',                                                            &
+         long_name='pft weight relative to corresponding column', units='',         &
+         interpinic_flag='area', readvar=readvar, data=patch%wtcol)
+    end if
 
     ! Snow column variables
 
